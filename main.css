@@ -1,0 +1,110 @@
+html {
+  overflow: hidden;
+}
+
+body {
+  background: #784391;
+  font-family: 'Avenir';
+  text-align: center;
+  color: #d8b1e9;
+
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.hidden-emojis {
+  display: none;
+}
+
+.text {
+  position: relative;
+  width: 100vw;
+  height: 200px;
+  max-width: 100%;
+}
+
+.text h1 {
+  position: absolute;
+  left: 75vw;
+  right: 0;
+  opacity: 0;
+  transition: all 0.5s ease-in-out;
+  display: block;
+  min-width: 320px;
+  transform: scale(1);
+  margin: 0;
+    text-shadow: 0px 0px 15px #411b53;
+}
+
+.text h1.enter {
+  opacity: 1;
+  left: 0;
+  transform: scale(1.4);
+}
+
+.text h1.active.exit {
+  opacity: 0;
+  right: 75vw;
+  transform: scale(1);
+}
+
+/*
+TODO:
+
+Text Enter Animation
+Text Exit Animation
+Emoji Explosion Animation
+
+*/
+
+.emoji-container {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.emoji-container .emoji {
+  position: absolute;
+  bottom: 0;
+  animation-duration: 3.5s;
+  animation-fill-mode: forwards;
+  font-size: 3rem;
+}
+
+.emoji-container.left .emoji {
+  left: 0;
+  right: 100%;
+  transform: translate(0, 0);
+  opacity: 1;
+}
+
+.emoji-container.left .emoji {
+  animation-name: emojiLeft;
+}
+
+.emoji-container.right .emoji {
+  right: 0;
+  left: 100%;
+  transform: translate(0,0)
+}
+
+.emoji-container.right .emoji {
+  animation-name: emojiRight;
+}
+
+@keyframes emojiLeft {
+  0%   { transform:translate(500px, 100px) rotateZ(45deg) scale(1);}
+  99% {transform: translate(0,-1000px) rotateZ(-45deg) scale(5);}
+  100% {opacity: 0;}
+}
+
+@keyframes emojiRight {
+  0%   {transform: translate(-600px, 100px) rotateZ(-45deg) scale(1);}
+  99% {transform: translate(0,-1100px) rotateZ(45deg) scale(5);}
+  100% {opacity: 0;}
+}
